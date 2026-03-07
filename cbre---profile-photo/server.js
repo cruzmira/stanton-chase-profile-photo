@@ -45,7 +45,7 @@ app.use(express.static(distPath));
 // 5. API Endpointy
 app.post('/api/generate-image', async (req, res) => {
   try {
-    const apiKey = process.env.API_KEY || 'AIzaSyDu88qaKlBT3D554n6HIRgcoPQiFHAALvc';
+    const apiKey = process.env.API_KEY;
     if (!apiKey) {
       console.error("API Key is missing in environment variables");
       return res.status(500).json({ error: "Server configuration error" });
