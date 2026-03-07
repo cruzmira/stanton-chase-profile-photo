@@ -1,0 +1,7 @@
+{
+  "name": "CBRE - Profile Photo",
+  "description": "Professional profile photo generator using Gemini Nano Banana model.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
