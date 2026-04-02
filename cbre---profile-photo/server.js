@@ -129,9 +129,6 @@ OUTPUT: Single person, head-and-shoulders crop, 4:5 aspect ratio, photorealistic
       ],
       config: {
         responseModalities: ['TEXT', 'IMAGE'],
-        imageConfig: {
-          personGeneration: 'allow_all',
-        },
       },
     });
 
