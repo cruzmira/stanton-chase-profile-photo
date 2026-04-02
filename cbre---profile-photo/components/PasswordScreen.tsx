@@ -23,7 +23,7 @@ const PasswordScreen: React.FC<PasswordScreenProps> = ({ onUnlock }) => {
       <div className="w-full max-w-md px-6 flex flex-col items-center">
 
         {/* Stanton Chase Logo */}
-        <img src="/stanton_white.png" alt="Stanton Chase" className="h-16 mb-2" />
+        <img src="/logo-blue.svg" alt="Stanton Chase" className="h-12 mb-2 brightness-0 invert" />
 
         {/* Subtitle */}
         <p className="text-white/40 text-xs uppercase tracking-[0.3em] font-light mb-12">
