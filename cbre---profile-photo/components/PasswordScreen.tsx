@@ -19,7 +19,7 @@ const PasswordScreen: React.FC<PasswordScreenProps> = ({ onUnlock }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#E8ECF0' }}>
+    <div className="min-h-screen flex items-center justify-center bg-[#e5efff]">
       <div className="w-full max-w-md px-6">
         <div className="bg-white rounded-2xl shadow-lg p-10 flex flex-col items-center">
 
@@ -27,7 +27,7 @@ const PasswordScreen: React.FC<PasswordScreenProps> = ({ onUnlock }) => {
           <img src="/logo-blue.svg" alt="Stanton Chase" className="h-12 mb-6" />
 
           {/* Title */}
-          <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Password Protected Access</h2>
+          <h2 className="text-xl font-bold text-[#062152] mb-2 text-center">Password Protected Access</h2>
           <p className="text-sm text-gray-500 text-center mb-8">
             Please enter the password to access the application.
           </p>
@@ -43,7 +43,7 @@ const PasswordScreen: React.FC<PasswordScreenProps> = ({ onUnlock }) => {
                   setError(false);
                 }}
                 placeholder="Password"
-                className={`w-full border ${error ? 'border-red-400' : 'border-gray-300'} rounded-lg px-4 py-3 text-sm text-gray-800 outline-none transition-all duration-200 focus:border-[#006a4e] focus:ring-2 focus:ring-[#006a4e]/20 placeholder:text-gray-400`}
+                className={`w-full border ${error ? 'border-red-400' : 'border-gray-200'} rounded-xl px-4 py-3 text-sm text-gray-800 outline-none transition-all duration-200 focus:border-[#1054cc] focus:ring-2 focus:ring-[#1054cc]/20 placeholder:text-gray-400`}
                 autoFocus
               />
               {error && (
@@ -53,7 +53,7 @@ const PasswordScreen: React.FC<PasswordScreenProps> = ({ onUnlock }) => {
 
             <button
               type="submit"
-              className="w-full bg-[#003f2d] hover:bg-[#002e21] text-white font-semibold py-3 rounded-lg transition-colors duration-200 text-sm"
+              className="w-full bg-[#1054cc] hover:bg-[#0d44ab] text-white font-semibold py-3 rounded-xl transition-colors duration-200 text-sm shadow-lg shadow-[#1054cc]/20"
             >
               Enter
             </button>

@@ -237,9 +237,9 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
 
       {/* Hero Section */}
       <div className="text-center mb-12 max-w-3xl animate-fade-in-up">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-[#003f2d] mb-6 tracking-tight leading-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-[#062152] mb-6 tracking-tight leading-tight">
           <span className="block">Professional Identity.</span>
-          <span className="bg-gradient-to-r from-[#006a4e] to-[#40c090] bg-clip-text text-transparent">Enhanced by AI.</span>
+          <span className="bg-gradient-to-r from-[#1054cc] to-[#3d7fe5] bg-clip-text text-transparent">Enhanced by AI.</span>
         </h1>
         <p className="text-gray-500 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
           Transform your selfie into a corporate standard headshot with the Stanton Chase signature style in seconds.
@@ -263,7 +263,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {/* Drag Drop Area */}
               <div
-                className="group relative border-2 border-dashed border-gray-200 hover:border-[#006a4e] bg-gray-50/50 hover:bg-[#006a4e]/5 rounded-3xl p-10 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 h-80"
+                className="group relative border-2 border-dashed border-gray-200 hover:border-[#1054cc] bg-gray-50/50 hover:bg-[#1054cc]/5 rounded-3xl p-10 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 h-80"
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
                 onClick={() => fileInputRef.current?.click()}
@@ -271,9 +271,9 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
                 <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleFileChange} />
 
                 <div className="w-20 h-20 bg-white rounded-2xl shadow-lg shadow-gray-100 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-300">
-                  <svg className="w-8 h-8 text-[#006a4e]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                  <svg className="w-8 h-8 text-[#1054cc]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#006a4e] transition-colors">{t.uploadTitle}</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#1054cc] transition-colors">{t.uploadTitle}</h3>
                 <p className="text-gray-400 text-center text-sm">{t.dragDrop}</p>
                 <p className="text-gray-300 text-xs mt-2 text-center">JPG, PNG (Max 10MB) • Single Person Only</p>
               </div>
@@ -282,12 +282,12 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
               <div className="flex flex-col h-80">
                 <button
                   onClick={startCamera}
-                  className="flex-1 relative overflow-hidden group rounded-3xl bg-[#003f2d] text-white p-8 flex flex-col items-center justify-center shadow-lg shadow-[#003f2d]/20 hover:shadow-[#003f2d]/40 transition-all duration-300 hover:-translate-y-1"
+                  className="flex-1 relative overflow-hidden group rounded-3xl bg-[#062152] text-white p-8 flex flex-col items-center justify-center shadow-lg shadow-[#062152]/20 hover:shadow-[#062152]/40 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <svg className="w-16 h-16 mb-6 text-green-200 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  <svg className="w-16 h-16 mb-6 text-blue-200 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                   <span className="text-2xl font-bold">{t.useCamera}</span>
-                  <span className="text-green-200/60 mt-2 text-sm">Take a photo now</span>
+                  <span className="text-blue-200/60 mt-2 text-sm">Take a photo now</span>
                 </button>
               </div>
             </div>
@@ -322,7 +322,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
               <button onClick={stopCamera} className="px-8 py-4 bg-gray-100 text-gray-600 font-bold rounded-2xl hover:bg-gray-200 transition-colors">
                 {t.cancel}
               </button>
-              <button onClick={capturePhoto} className="px-10 py-4 bg-[#006a4e] text-white font-bold rounded-2xl hover:bg-[#005a42] hover:-translate-y-1 transition-all shadow-lg shadow-[#006a4e]/20 flex items-center gap-2">
+              <button onClick={capturePhoto} className="px-10 py-4 bg-[#1054cc] text-white font-bold rounded-2xl hover:bg-[#0d44ab] hover:-translate-y-1 transition-all shadow-lg shadow-[#1054cc]/20 flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
                 {t.capture}
               </button>
@@ -367,19 +367,19 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
                             key={style.id}
                             onClick={() => setSelectedStyle(style.id)}
                             className={`relative flex flex-col items-center py-3 px-2 rounded-xl border-2 transition-all duration-200 ${selectedStyle === style.id
-                                ? 'border-[#003F2D] bg-[#003F2D]/5 shadow-md scale-[1.02]'
+                                ? 'border-[#1054cc] bg-[#1054cc]/5 shadow-md scale-[1.02]'
                                 : 'border-gray-100 hover:border-gray-200 hover:bg-gray-50'
                               }`}
                           >
                             <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${style.color} flex items-center justify-center text-lg mb-1.5 shadow-sm`}>
                               {style.icon}
                             </div>
-                            <span className={`text-[10px] font-semibold leading-tight text-center ${selectedStyle === style.id ? 'text-[#003F2D]' : 'text-gray-500'
+                            <span className={`text-[10px] font-semibold leading-tight text-center ${selectedStyle === style.id ? 'text-[#1054cc]' : 'text-gray-500'
                               }`}>
                               {getStyleLabel(style.id)}
                             </span>
                             {selectedStyle === style.id && (
-                              <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#003F2D] rounded-full flex items-center justify-center">
+                              <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#1054cc] rounded-full flex items-center justify-center">
                                 <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                               </div>
                             )}
@@ -391,7 +391,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
                     {/* Generate Button */}
                     <button
                       onClick={handleGenerate}
-                      className="w-full py-4 bg-[#003F2D] text-white text-lg font-bold rounded-2xl shadow-xl shadow-[#003F2D]/25 hover:bg-[#002e21] hover:-translate-y-1 hover:shadow-2xl transition-all flex items-center justify-center relative overflow-hidden group"
+                      className="w-full py-4 bg-[#1054cc] text-white text-lg font-bold rounded-2xl shadow-xl shadow-[#1054cc]/25 hover:bg-[#0d44ab] hover:-translate-y-1 hover:shadow-2xl transition-all flex items-center justify-center relative overflow-hidden group"
                     >
                       <span className="relative z-10 flex items-center">
                         <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
@@ -405,7 +405,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
 
               {/* Arrow / Loading State */}
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:flex">
-                <div className={`w-14 h-14 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-[#006a4e] transition-all duration-500 ${isLoading ? 'scale-110 shadow-[#006a4e]/20' : ''}`}>
+                <div className={`w-14 h-14 bg-white rounded-full shadow-lg border border-gray-100 flex items-center justify-center text-[#1054cc] transition-all duration-500 ${isLoading ? 'scale-110 shadow-[#1054cc]/20' : ''}`}>
                   {isLoading ? (
                     <svg className="w-8 h-8 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                   ) : (
@@ -416,20 +416,20 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
 
               {/* Result Image */}
               <div className="flex flex-col items-center order-1 lg:order-2">
-                <div className={`relative w-full max-w-[340px] aspect-[4/5] rounded-[2rem] overflow-hidden transition-all duration-700 ${generatedImage ? 'ring-4 ring-[#006a4e] shadow-2xl shadow-[#006a4e]/20' : 'ring-4 ring-gray-100 bg-gray-50'}`}>
+                <div className={`relative w-full max-w-[340px] aspect-[4/5] rounded-[2rem] overflow-hidden transition-all duration-700 ${generatedImage ? 'ring-4 ring-[#1054cc] shadow-2xl shadow-[#1054cc]/20' : 'ring-4 ring-gray-100 bg-gray-50'}`}>
                   {isLoading ? (
                     <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-50">
-                      <div className="w-24 h-24 rounded-full border-4 border-gray-200 border-t-[#006a4e] animate-spin mb-6"></div>
-                      <p className="text-[#006a4e] font-bold text-lg animate-pulse">{t.generating}</p>
+                      <div className="w-24 h-24 rounded-full border-4 border-gray-200 border-t-[#1054cc] animate-spin mb-6"></div>
+                      <p className="text-[#1054cc] font-bold text-lg animate-pulse">{t.generating}</p>
                       <p className="text-gray-400 text-xs mt-2 font-mono">AI PROCESSING</p>
                     </div>
                   ) : generatedImage ? (
                     <>
                       <img src={generatedImage} alt="Generated" className="w-full h-full object-cover animate-fade-in" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#003f2d]/90 to-transparent">
+                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#062152]/90 to-transparent">
                         <div className="flex justify-between items-end">
-                          <span className="text-white text-xs font-bold uppercase tracking-wider bg-[#006a4e] px-3 py-1 rounded-lg shadow-lg">Stanton Chase Professional</span>
-                          <div className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.8)] animate-pulse"></div>
+                          <span className="text-white text-xs font-bold uppercase tracking-wider bg-[#1054cc] px-3 py-1 rounded-lg shadow-lg">Stanton Chase Professional</span>
+                          <div className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.8)] animate-pulse"></div>
                         </div>
                       </div>
                     </>
@@ -446,7 +446,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
                 {generatedImage && (
                   <button
                     onClick={handleDownload}
-                    className="mt-8 w-full max-w-[340px] py-4 bg-white border border-gray-200 text-[#003f2d] font-bold text-lg rounded-2xl shadow-lg hover:border-[#006a4e] hover:text-[#006a4e] hover:shadow-xl transition-all flex items-center justify-center gap-2 group"
+                    className="mt-8 w-full max-w-[340px] py-4 bg-white border border-gray-200 text-[#062152] font-bold text-lg rounded-2xl shadow-lg hover:border-[#1054cc] hover:text-[#1054cc] hover:shadow-xl transition-all flex items-center justify-center gap-2 group"
                   >
                     <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                     {t.download}
