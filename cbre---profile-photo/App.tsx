@@ -51,7 +51,7 @@ const App: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4">
             <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-8"></div>
             <p className="text-gray-400 text-xs font-medium tracking-wide uppercase">
-              &copy; {new Date().getFullYear()} CBRE, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Stanton Chase. All rights reserved.
             </p>
             <div className="mt-4 flex justify-center gap-6 text-xs text-gray-500">
               <span className="hover:text-[#006a4e] transition-colors cursor-pointer">Privacy Policy</span>

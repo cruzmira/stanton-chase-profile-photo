@@ -62,68 +62,76 @@ app.post('/api/generate-image', async (req, res) => {
     // Style-specific prompt additions
     const stylePrompts = {
       classic: `
-        4. **CONTEXT**: Professional corporate environment, clean neutral gray background with soft studio lighting, business formal attire (dark suit/blazer with tie or elegant blouse). Classic LinkedIn-style headshot composition.
+        STYLE: Clean neutral gray studio background. Soft, even studio lighting from front-left. Business formal attire — dark navy suit, white dress shirt, dark tie. Classic LinkedIn-style head-and-shoulders crop.
       `,
       casual: `
-        4. **CONTEXT**: Modern business-casual style with a clean, slightly blurred modern office or co-working space background. The person should wear smart-casual attire (polo shirt, casual blazer, or neat sweater). Warm, natural lighting.
+        STYLE: Slightly blurred modern office or co-working space background. Warm natural lighting. Smart-casual attire — polo shirt or casual blazer over a neat sweater. Relaxed but professional expression.
       `,
       creative: `
-        4. **CONTEXT**: Creative professional style with a vibrant yet tasteful background (think startup or design studio). Modern trendy professional outfit. Dynamic, editorial-style lighting with slight color grading. Artful composition.
+        STYLE: Vibrant but tasteful background suggesting a creative workspace or design studio. Modern trendy outfit. Dynamic editorial-style lighting with subtle color grading. Artful but professional composition.
       `,
       outdoor: `
-        4. **CONTEXT**: Professional outdoor portrait with beautiful natural bokeh background (park, garden, or urban greenery). Business casual or smart attire. Golden hour or soft natural daylight. Professional depth of field.
+        STYLE: Beautiful natural bokeh background — park, garden, or urban greenery. Golden hour or soft natural daylight. Business casual or smart attire. Professional shallow depth of field.
       `,
       executive: `
-        4. **CONTEXT**: Premium executive portrait in a prestigious environment (mahogany office, conference room with city skyline view, or elegant boardroom). Power suit with confident posture. Dramatic, cinematic studio lighting. Ultra-premium feel.
+        STYLE: Prestigious environment — mahogany-panelled office, boardroom, or city skyline view. Premium dark suit with confident posture. Dramatic, cinematic lighting. Ultra-premium C-suite executive feel.
       `,
       minimalist: `
-        4. **CONTEXT**: Ultra-clean, minimalist white or very light gray background. Simple, elegant attire (monochrome tones). Bright, even studio lighting. Apple-style product photography aesthetic applied to a person. Very modern and clean.
+        STYLE: Pure white or very light gray seamless background. Simple, elegant monochrome attire. Bright, perfectly even studio lighting. Ultra-clean Apple-style aesthetic.
       `,
     };
 
     const selectedStyle = stylePrompts[style] || stylePrompts.classic;
 
-    // Strict Prompt Logic
-    const prompt = `
-      Generate a hyper-realistic, professional corporate headshot of the EXACT person provided in the input image.
+    // EDIT-based prompt — preserves identity far better than "generate new"
+    const prompt = `Edit this photo into a professional corporate headshot.
 
-      CRITICAL MANDATORY REQUIREMENTS (NON-NEGOTIABLE):
+ABSOLUTE RULE — IDENTITY LOCK:
+This is a PHOTO EDITING task, NOT a generation task. The person's face must remain EXACTLY as it is in the input photo. Do NOT alter, idealize, or regenerate the face. Preserve every facial feature precisely:
+- Exact same eye shape, eye color, eye spacing, and eyebrow shape
+- Exact same nose shape, width, and bridge
+- Exact same mouth shape, lip thickness, and smile
+- Exact same jaw line, chin shape, and face proportions
+- Exact same facial hair (beard, stubble) — keep it identical
+- Exact same skin tone, skin texture, moles, freckles, scars
+- Exact same hair color, hair texture, hairline, and hairstyle
+The output face must be indistinguishable from the input face. If shown side-by-side, a person must immediately say "that's the same person."
 
-      1. **EXACT IDENTITY PRESERVATION**: The generated face MUST be a perfect biometric match to the input person.
-         - Do not change the facial structure, nose shape, eye shape, or unique features.
-         - It must look like the SAME person, just in professional attire and better lighting.
-         - Do not genericize the face.
+WHAT TO CHANGE (only these things):
+- Crop to head-and-shoulders portrait composition
+- Replace the background with the style described below
+- Add professional attire (suit/blazer) on the body only — do NOT touch the face
+- Apply professional studio-quality lighting — but keep the face structure exactly as-is
+- Remove any distracting elements from the background
 
-      2. **SINGLE HUMAN SUBJECT**: 
-         - The generated image must contain EXACTLY ONE person. 
-         - If the input image has multiple people, crop to the main central subject and ignore others.
-         - The composition must be a standard head-and-shoulders corporate portrait.
+WHAT TO NEVER CHANGE:
+- The face — zero modifications
+- Facial hair — keep exactly as in input
+- Hair — keep the same style and color
+- Skin — no smoothing, no airbrushing, keep all natural texture
 
-      3. **EXTREME PHOTOREALISM (RAW STYLE)**: 
-         - ZERO skin smoothing. 
-         - Visible pores, skin texture, and natural imperfections are required. 
-         - Must look like a high-resolution RAW photo taken with a DSLR, not a 3D render.
+${selectedStyle}
 
-      ${selectedStyle}
-    `;
+OUTPUT: Single person, head-and-shoulders crop, 4:5 aspect ratio, photorealistic DSLR quality.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-flash-image-preview',
+      model: 'gemini-2.0-flash-exp',
       contents: {
         parts: [
           {
-            inlineData: {
-              mimeType: mimeType,
-              data: image // Base64 string from frontend
-            }
+            text: prompt
           },
           {
-            text: prompt
+            inlineData: {
+              mimeType: mimeType,
+              data: image
+            }
           }
         ]
       },
       config: {
         responseModalities: ['Text', 'Image'],
+        personGeneration: 'ALLOW_ALL',
       },
     });
 

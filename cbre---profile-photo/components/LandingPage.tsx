@@ -6,10 +6,9 @@ interface LandingPageProps {
 
 const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
     const steps = [
-        { icon: '📸', label: 'Upload Product Photo', color: 'bg-blue-50 text-blue-600', desc: 'Upload your product image' },
-        { icon: '🎨', label: 'Select Environment & Scene', color: 'bg-orange-50 text-orange-600', desc: 'Choose a professional setting' },
-        { icon: '💡', label: 'Choose Lighting Style', color: 'bg-yellow-50 text-yellow-600', desc: 'Pick the perfect lighting' },
-        { icon: '🤖', label: 'AI Image Generation (Gemini)', color: 'bg-red-50 text-red-600', desc: 'Generate with Gemini AI' },
+        { icon: '📸', label: 'Upload Your Photo', color: 'bg-blue-50 text-blue-600', desc: 'Upload a selfie or headshot' },
+        { icon: '🎨', label: 'Select Style', color: 'bg-orange-50 text-orange-600', desc: 'Choose a professional style' },
+        { icon: '🤖', label: 'AI Generation (Gemini)', color: 'bg-red-50 text-red-600', desc: 'Generate with Gemini AI' },
         { icon: '📥', label: 'Download & Use', color: 'bg-green-50 text-green-600', desc: 'Download your result' },
     ];
 
@@ -19,8 +18,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             {/* Top Nav */}
             <nav className="bg-[#003f2d] px-6 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                    <img src="/CBRE_white.png" alt="CBRE" className="h-5" />
-                    <span className="text-white/60 text-sm font-medium">Product Photography</span>
+                    <img src="/stanton_white.png" alt="Stanton Chase" className="h-5" />
+                    <span className="text-white/60 text-sm font-medium">Profile Photo Generator</span>
                 </div>
                 <button
                     onClick={onEnterApp}
@@ -38,10 +37,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
                         <span className="text-xs font-bold uppercase tracking-widest text-green-300/80">AI-Powered Platform</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
-                        CBRE Product Photography
+                        Stanton Chase Profile Photo
                     </h1>
                     <p className="text-white/60 text-lg">
-                        AI-Powered Product Photo Generation
+                        AI-Powered Professional Headshot Generator
                     </p>
                 </div>
             </div>
@@ -68,7 +67,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
                             Overview
                         </h2>
                         <p className="text-gray-600 leading-relaxed">
-                            The CBRE Product Photography platform leverages advanced Generative AI models to transform ordinary product images into stunning, professional-grade photographs. Upload your product, select an environment and lighting style, and let AI generate beautiful marketing-ready images in seconds.
+                            The Stanton Chase Profile Photo platform leverages advanced Generative AI to transform selfies and casual headshots into professional corporate portraits. Upload your photo, select a style, and let AI generate a polished headshot in seconds.
                         </p>
                     </div>
 
@@ -78,19 +77,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
                         <ul className="space-y-2 text-gray-600">
                             <li className="flex items-start gap-2">
                                 <span className="text-[#006a4e] mt-1">•</span>
-                                Dramatically reduce product photography costs — no studio needed
+                                Professional headshots without a photo studio
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-[#006a4e] mt-1">•</span>
-                                Generate multiple scene variations from a single product photo
+                                Multiple style variations from a single selfie
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-[#006a4e] mt-1">•</span>
-                                Professional-quality results powered by Gemini AI
+                                Consistent, professional look across the team
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-[#006a4e] mt-1">•</span>
-                                Instant generation — from upload to finished photo in seconds
+                                Instant generation — from upload to polished headshot in seconds
                             </li>
                         </ul>
                     </div>
@@ -99,10 +98,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
                     <div>
                         <h3 className="text-lg font-bold text-gray-900 mb-3">Business Value</h3>
                         <ul className="space-y-2 text-gray-600">
-                            <li className="flex items-center gap-2"><span className="text-[#006a4e]">✓</span> Up to 90% cost savings compared to traditional product photography</li>
-                            <li className="flex items-center gap-2"><span className="text-[#006a4e]">✓</span> Consistent, high-quality visuals across all product lines</li>
-                            <li className="flex items-center gap-2"><span className="text-[#006a4e]">✓</span> Rapid iteration for marketing campaigns and presentations</li>
-                            <li className="flex items-center gap-2"><span className="text-[#006a4e]">✓</span> Multi-language support across the CEE region</li>
+                            <li className="flex items-center gap-2"><span className="text-[#006a4e]">✓</span> Significant cost savings vs. professional photo sessions</li>
+                            <li className="flex items-center gap-2"><span className="text-[#006a4e]">✓</span> Consistent corporate look for the entire team</li>
+                            <li className="flex items-center gap-2"><span className="text-[#006a4e]">✓</span> Ready for LinkedIn, company website, and internal directories</li>
+                            <li className="flex items-center gap-2"><span className="text-[#006a4e]">✓</span> Multi-language support (EN, CZ, SK)</li>
                         </ul>
                     </div>
                 </div>
@@ -137,7 +136,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
                             </div>
                             <div>
                                 <span className="text-xs text-gray-400 uppercase tracking-wide">Industry</span>
-                                <p className="font-semibold text-gray-700 mt-1">Commercial Real Estate</p>
+                                <p className="font-semibold text-gray-700 mt-1">Executive Search</p>
                             </div>
                             <div>
                                 <span className="text-xs text-gray-400 uppercase tracking-wide">Version</span>

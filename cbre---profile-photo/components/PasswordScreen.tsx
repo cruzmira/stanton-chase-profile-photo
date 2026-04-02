@@ -10,7 +10,7 @@ const PasswordScreen: React.FC<PasswordScreenProps> = ({ onUnlock }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'cbre*') {
+    if (password === 'stanton*') {
       onUnlock();
     } else {
       setError(true);
@@ -23,8 +23,8 @@ const PasswordScreen: React.FC<PasswordScreenProps> = ({ onUnlock }) => {
       <div className="w-full max-w-md px-6">
         <div className="bg-white rounded-2xl shadow-lg p-10 flex flex-col items-center">
 
-          {/* CBRE Logo */}
-          <img src="/CBRE_green.png" alt="CBRE" className="h-12 mb-6" />
+          {/* Stanton Chase Logo */}
+          <img src="/logo-blue.svg" alt="Stanton Chase" className="h-12 mb-6" />
 
           {/* Title */}
           <h2 className="text-xl font-bold text-gray-900 mb-2 text-center">Password Protected Access</h2>

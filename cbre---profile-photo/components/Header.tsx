@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ currentLang, onLanguageChange }) => {
 
         {/* Logo Area */}
         <div className="flex items-center space-x-4 cursor-default select-none">
-          <img src="/CBRE_green.png" alt="CBRE" className="h-7" />
+          <img src="/logo-blue.svg" alt="Stanton Chase" className="h-7" />
           <div className="h-4 w-px bg-gray-300 hidden sm:block transform rotate-12"></div>
           <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:block bg-gray-100 px-2 py-0.5 rounded-md">
             Profile AI

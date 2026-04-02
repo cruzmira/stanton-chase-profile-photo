@@ -31,30 +31,30 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
 
   const t = DICTIONARY[currentLang];
 
-  // Function to apply CBRE watermark on generated image
+  // Function to apply Stanton Chase watermark on generated image
   const applyWatermark = (imageSrc: string): Promise<string> => {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) { resolve(imageSrc); return; }
+
+        // Draw the generated image
+        ctx.drawImage(img, 0, 0);
+
+        const padding = img.width * 0.03;
+
+        // Try logo first, fall back to text watermark
         const logo = new Image();
         logo.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          const ctx = canvas.getContext('2d');
-          if (!ctx) { resolve(imageSrc); return; }
-
-          // Draw the generated image
-          ctx.drawImage(img, 0, 0);
-
-          // Calculate logo size (15% of image width)
-          const logoWidth = img.width * 0.15;
+          // Logo watermark — bottom-right, semi-transparent
+          const logoWidth = img.width * 0.18;
           const logoHeight = (logo.height / logo.width) * logoWidth;
-          const padding = img.width * 0.03;
-
-          // Draw semi-transparent logo at bottom-right
-          ctx.globalAlpha = 0.3;
+          ctx.globalAlpha = 0.35;
           ctx.drawImage(
             logo,
             img.width - logoWidth - padding,
@@ -63,11 +63,40 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
             logoHeight
           );
           ctx.globalAlpha = 1.0;
-
           resolve(canvas.toDataURL('image/png'));
         };
-        logo.onerror = () => resolve(imageSrc); // Fallback without watermark
-        logo.src = '/CBRE_white.png';
+        logo.onerror = () => {
+          // Text watermark fallback — bottom-right corner
+          const fontSize = Math.round(img.width * 0.028);
+          ctx.font = `600 ${fontSize}px Inter, Arial, sans-serif`;
+          ctx.globalAlpha = 0.4;
+
+          // Subtle dark background pill behind text
+          const text = 'STANTON CHASE';
+          const metrics = ctx.measureText(text);
+          const textWidth = metrics.width;
+          const pillPadX = fontSize * 0.5;
+          const pillPadY = fontSize * 0.3;
+          const pillX = img.width - textWidth - padding * 2 - pillPadX;
+          const pillY = img.height - padding - fontSize - pillPadY;
+
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+          const pillRadius = fontSize * 0.35;
+          const pw = textWidth + pillPadX * 2;
+          const ph = fontSize + pillPadY * 2;
+          ctx.beginPath();
+          ctx.roundRect(pillX, pillY, pw, ph, pillRadius);
+          ctx.fill();
+
+          // White text
+          ctx.fillStyle = '#FFFFFF';
+          ctx.globalAlpha = 0.7;
+          ctx.fillText(text, pillX + pillPadX, pillY + fontSize + pillPadY * 0.4);
+
+          ctx.globalAlpha = 1.0;
+          resolve(canvas.toDataURL('image/png'));
+        };
+        logo.src = '/stanton_white.png';
       };
       img.onerror = () => reject(new Error('Failed to load image'));
       img.src = imageSrc;
@@ -169,7 +198,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
 
     try {
       const result = await generateProfilePhoto(file, selectedStyle);
-      // Apply CBRE watermark to the generated image
+      // Apply Stanton Chase watermark to the generated image
       const watermarked = await applyWatermark(result);
       setGeneratedImage(watermarked);
     } catch (err) {
@@ -183,7 +212,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
     if (generatedImage) {
       const link = document.createElement('a');
       link.href = generatedImage;
-      link.download = 'cbre-profile-photo.png';
+      link.download = 'stanton-chase-profile-photo.png';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -213,7 +242,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
           <span className="bg-gradient-to-r from-[#006a4e] to-[#40c090] bg-clip-text text-transparent">Enhanced by AI.</span>
         </h1>
         <p className="text-gray-500 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-          Transform your selfie into a corporate standard headshot with the CBRE signature style in seconds.
+          Transform your selfie into a corporate standard headshot with the Stanton Chase signature style in seconds.
         </p>
       </div>
 
@@ -399,7 +428,7 @@ const PhotoGenerator: React.FC<PhotoGeneratorProps> = ({ currentLang }) => {
                       <img src={generatedImage} alt="Generated" className="w-full h-full object-cover animate-fade-in" />
                       <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-[#003f2d]/90 to-transparent">
                         <div className="flex justify-between items-end">
-                          <span className="text-white text-xs font-bold uppercase tracking-wider bg-[#006a4e] px-3 py-1 rounded-lg shadow-lg">CBRE Professional</span>
+                          <span className="text-white text-xs font-bold uppercase tracking-wider bg-[#006a4e] px-3 py-1 rounded-lg shadow-lg">Stanton Chase Professional</span>
                           <div className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.8)] animate-pulse"></div>
                         </div>
                       </div>
