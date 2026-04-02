@@ -115,23 +115,23 @@ ${selectedStyle}
 OUTPUT: Single person, head-and-shoulders crop, 4:5 aspect ratio, photorealistic DSLR quality.`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
-      contents: {
-        parts: [
-          {
-            text: prompt
-          },
-          {
-            inlineData: {
-              mimeType: mimeType,
-              data: image
-            }
+      model: 'gemini-3.1-flash-image-preview',
+      contents: [
+        {
+          text: prompt
+        },
+        {
+          inlineData: {
+            mimeType: mimeType,
+            data: image
           }
-        ]
-      },
+        }
+      ],
       config: {
-        responseModalities: ['Text', 'Image'],
-        personGeneration: 'ALLOW_ALL',
+        responseModalities: ['TEXT', 'IMAGE'],
+        imageConfig: {
+          personGeneration: 'allow_all',
+        },
       },
     });
 
@@ -156,8 +156,9 @@ OUTPUT: Single person, head-and-shoulders crop, 4:5 aspect ratio, photorealistic
     res.json({ image: generatedImageBase64 });
 
   } catch (error) {
-    console.error("Error generating photo:", error);
-    res.status(500).json({ error: "Failed to generate image" });
+    console.error("Error generating photo:", error?.message || error);
+    console.error("Full error:", JSON.stringify(error, null, 2));
+    res.status(500).json({ error: `Failed to generate image: ${error?.message || 'Unknown error'}` });
   }
 });
 
