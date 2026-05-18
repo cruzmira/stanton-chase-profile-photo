@@ -83,36 +83,47 @@ app.post('/api/generate-image', async (req, res) => {
 
     const selectedStyle = stylePrompts[style] || stylePrompts.classic;
 
-    // EDIT-based prompt — preserves identity far better than "generate new"
-    const prompt = `Edit this photo into a professional corporate headshot.
+    // EDIT-based prompt — strong identity preservation
+    const prompt = `Photo editing task. You are NOT generating a new person — you are editing this person. Keep this exact person 100% recognizable; only modify background, clothing, framing, and lighting.
 
-ABSOLUTE RULE — IDENTITY LOCK:
-This is a PHOTO EDITING task, NOT a generation task. The person's face must remain EXACTLY as it is in the input photo. Do NOT alter, idealize, or regenerate the face. Preserve every facial feature precisely:
-- Exact same eye shape, eye color, eye spacing, and eyebrow shape
-- Exact same nose shape, width, and bridge
-- Exact same mouth shape, lip thickness, and smile
-- Exact same jaw line, chin shape, and face proportions
-- Exact same facial hair (beard, stubble) — keep it identical
-- Exact same skin tone, skin texture, moles, freckles, scars
-- Exact same hair color, hair texture, hairline, and hairstyle
-The output face must be indistinguishable from the input face. If shown side-by-side, a person must immediately say "that's the same person."
+CRITICAL IDENTITY LOCK (override beautification/idealization defaults):
+The person in the output MUST be the SAME person as the input. Treat this like a forensic photo edit.
 
-WHAT TO CHANGE (only these things):
-- Crop to head-and-shoulders portrait composition
-- Replace the background with the style described below
-- Add professional attire (suit/blazer) on the body only — do NOT touch the face
-- Apply professional studio-quality lighting — but keep the face structure exactly as-is
-- Remove any distracting elements from the background
+PRESERVE EXACTLY (pixel-level fidelity):
+- Eye spacing, shape, color, eyelid; eyebrow thickness and arch
+- Nose width, bridge, nostrils, tip — do NOT slim or shorten
+- Mouth: upper AND lower lip thickness, width, smile shape, teeth visibility
+- Jaw, chin (including double chin if any), cleft if any
+- Cheekbones — do NOT add definition or slim cheeks
+- Forehead height and shape
+- ALL ASYMMETRIES — uneven eyes, uneven smile — preserve them. Real faces are asymmetric.
+- Skin texture: pores, fine lines, wrinkles, crows feet, nasolabial folds, freckles, moles, scars
+- Skin tone — exact, no lightening, no tan
+- Hair: exact color (including grays), texture, hairline (no fixing receding), style, volume
+- Facial hair: every stubble, beard, mustache — IDENTICAL
+- Age: keep all visible age markers, do NOT make younger
+- Body type and shoulder build
 
-WHAT TO NEVER CHANGE:
-- The face — zero modifications
-- Facial hair — keep exactly as in input
-- Hair — keep the same style and color
-- Skin — no smoothing, no airbrushing, keep all natural texture
+EXPLICITLY FORBIDDEN:
+- NO face slimming, NO eye enlargement, NO nose thinning, NO lip enhancement
+- NO chin sharpening, NO cheekbone enhancement
+- NO skin smoothing or airbrushing, NO wrinkle removal, NO blemish removal
+- NO teeth whitening, NO making younger, NO Hollywood beautification
+- NO ethnicity shift, NO eye color change, NO hair color enhancement
+A colleague must instantly recognize the person — no "wait, who is that?" moment.
+
+WHAT TO CHANGE:
+- Background per style below
+- Clothing on body (NOT face/neck)
+- Framing: head-and-shoulders, 4:5 portrait
+- Lighting: studio quality, but DO NOT use lighting to reshape the face
+- Remove background clutter
+
+VERIFY: Compare output face to input face feature by feature before finalizing. If ANY feature differs, redo.
 
 ${selectedStyle}
 
-OUTPUT: Single person, head-and-shoulders crop, 4:5 aspect ratio, photorealistic DSLR quality.`;
+OUTPUT: Single person, head-and-shoulders crop, 4:5 aspect ratio, photorealistic DSLR quality. Face identical to input. Only background, clothing, framing, lighting changed.`;
 
     const response = await ai.models.generateContent({
       model: 'gemini-3.1-flash-image-preview',

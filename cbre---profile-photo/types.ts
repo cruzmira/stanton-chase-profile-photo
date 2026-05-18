@@ -33,6 +33,8 @@ export interface Translations {
   styleOutdoor: string;
   styleExecutive: string;
   styleMinimalist: string;
+  regenerate: string;
+  takeNewPhoto: string;
 }
 
 export const DICTIONARY: Record<Language, Translations> = {
@@ -59,6 +61,8 @@ export const DICTIONARY: Record<Language, Translations> = {
     styleOutdoor: "Outdoor Portrait",
     styleExecutive: "Executive Premium",
     styleMinimalist: "Minimalist Clean",
+    regenerate: "Regenerate",
+    takeNewPhoto: "Take new photo",
   },
   [Language.CZ]: {
     title: "Generátor Profilové Fotografie",
@@ -83,6 +87,8 @@ export const DICTIONARY: Record<Language, Translations> = {
     styleOutdoor: "Venkovní portrét",
     styleExecutive: "Exekutivní premium",
     styleMinimalist: "Minimalistický čistý",
+    regenerate: "Vygenerovat znovu",
+    takeNewPhoto: "Vyfotit znovu",
   },
   [Language.SK]: {
     title: "Generátor Profilovej Fotografie",
@@ -107,5 +113,7 @@ export const DICTIONARY: Record<Language, Translations> = {
     styleOutdoor: "Vonkajší portrét",
     styleExecutive: "Exekutívny prémiový",
     styleMinimalist: "Minimalistický čistý",
+    regenerate: "Vygenerovať znova",
+    takeNewPhoto: "Odfotiť znova",
   }
 };
